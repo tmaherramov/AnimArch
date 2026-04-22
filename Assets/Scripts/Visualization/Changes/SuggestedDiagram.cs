@@ -12,7 +12,6 @@ using System.Text.RegularExpressions;
 using System.Linq;
 using System.Threading;
 using System.Text;
-using Codice.Client.BaseCommands;
 using UnityEngine.UI.Extensions;
 using Visualization.ClassDiagram.Diagrams;
 using Visualization.ClassDiagram.Editors;
