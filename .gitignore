@@ -83,3 +83,11 @@ crashlytics-build.properties
 /[Aa]ssets/[Cc]onfiguration/tokenChat.txt.meta
 /[Aa]ssets/[Cc]onfiguration/tokenChat1.txt
 /[Aa]ssets/[Cc]onfiguration/tokenChat1.txt.meta
+Assets/Configuration/keyGemini.txt
+Assets/Configuration/keyGemini.txt.meta
+Assets/Configuration/keyHuggingFace.txt
+Assets/Configuration/keyHuggingFace.txt.meta
+Assets/Configuration/keyPollinations.txt
+Assets/Configuration/keyPollinations.txt.meta
+Assets/Configuration/keyFalAI.txt
+Assets/Configuration/keyFalAI.txt.meta
