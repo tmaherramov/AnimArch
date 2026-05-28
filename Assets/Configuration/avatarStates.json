@@ -1,0 +1,9 @@
+{
+  "basePrompt": "a portrait of a young man with long ginger curly hair, blue eyes, white shirt, white background, digital art",
+  "states": [
+    { "name": "idle",     "prompt": "neutral face" },
+    { "name": "waiting",  "prompt": "same character, waiting, looking up, white background" },
+    { "name": "talking",  "prompt": "same character, talking, mouth slightly open, white background" },
+    { "name": "thinking", "prompt": "same character, thinking, furrowed brow, white background" }
+  ]
+}
