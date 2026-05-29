@@ -42,8 +42,14 @@ public class AIChatUI : MonoBehaviour
     public void SendPrompt()
     {
         if (string.IsNullOrEmpty(inputField.text)) return;
-        StartCoroutine(Request(inputField.text));
+
+        string prompt = inputField.text;
+
+        inputField.onValueChanged.RemoveListener(OnTyping);
         inputField.text = "";
+        inputField.onValueChanged.AddListener(OnTyping);
+
+        StartCoroutine(Request(prompt));
     }
 
     public void ChangeAvatar()
