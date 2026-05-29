@@ -5,12 +5,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using UnityEngine.UI;
 
 public class AIChatUI : MonoBehaviour
 {
     [Header("UI")]
     public TMP_InputField inputField;
     public TMP_Text responseText;
+    public ScrollRect scrollRect;
 
     public LoadImageTest avatar;
     public TMP_InputField avatarPromptField;
@@ -18,8 +20,19 @@ public class AIChatUI : MonoBehaviour
     private string apiKey;
     private List<ChatEntry> history = new List<ChatEntry>();
 
+
+    private void AddMessage(string text)
+    {
+        responseText.text += text + "\n";
+
+        Canvas.ForceUpdateCanvases();
+        scrollRect.verticalNormalizedPosition = 0f;
+    }
+    
     void Start()
     {
+
+        responseText.text = "";
         apiKey = File.ReadAllText(
             Path.Combine(Application.dataPath, "Configuration/tokenChat.txt")
         ).Trim();
@@ -63,7 +76,14 @@ public class AIChatUI : MonoBehaviour
     IEnumerator Request(string prompt)
     {
         history.Add(new ChatEntry { role = "user", content = prompt });
-        responseText.text = "Thinking...";
+
+        if (responseText.text.Length > 0)
+        {
+            AddMessage("");
+        }
+        AddMessage("<color=#4FC3F7><b>You:</b></color> " + prompt);
+
+
         avatar.ShowThinking();
 
         // Собираем все сообщения из истории в JSON
@@ -91,7 +111,7 @@ public class AIChatUI : MonoBehaviour
 
         if (req.result != UnityWebRequest.Result.Success)
         {
-            responseText.text = "Error: " + req.error;
+            AddMessage("<color=red><b>Error:</b></color> " + req.error);
             
             avatar.ShowIdle();
             yield break;
@@ -101,7 +121,9 @@ public class AIChatUI : MonoBehaviour
         history.Add(new ChatEntry { role = "assistant", content = reply });
         avatar.ShowTalking();
 
-        responseText.text = reply;
+        AddMessage("<color=#81C784><b>AI:</b></color> " + reply);
+
+
         yield return new WaitForSeconds(3f);
         avatar.ShowIdle();
     }
