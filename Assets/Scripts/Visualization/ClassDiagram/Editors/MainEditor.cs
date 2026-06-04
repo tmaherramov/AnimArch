@@ -277,6 +277,16 @@ namespace Visualization.ClassDiagram.Editors
             var relationInDiagram = DiagramPool.Instance.ClassDiagram.Relations
                 .Find(x => x.VisualObject.Equals(relation));
 
+
+            // Tymur
+            if (relationInDiagram == null)
+            {
+                Debug.LogError(
+                    $"Relation not found."
+                );
+                return;
+            }
+
             CDEditor.DeleteRelation(relationInDiagram);
             _visualEditor.DeleteRelation(relationInDiagram);
 

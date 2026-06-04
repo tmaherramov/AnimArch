@@ -572,4 +572,30 @@ public class SuggestedDiagram : MonoBehaviour
             });
         }
     }
+
+    // Tymur
+    public static void ShowSuggestionFromPlantUML(string plantUml)
+    {
+        if (string.IsNullOrWhiteSpace(plantUml))
+            return;
+
+        ClearSuggestions();
+
+
+        ClassDiagramManager manager = UMLParserBridge.Parse(plantUml);
+
+        ClassDiagramDiffer differ =
+            ClassDiagramDiffer.CreateClassDiagramDifferWithCurrentDiagram();
+
+        DiffResult diff = differ.GetDifference(manager);
+
+        DiagramPool.Instance.CurrentDiffResult = diff;
+
+        ClassDiagramChangesVisualizer visualizer =
+            new ClassDiagramChangesVisualizer(diff);
+
+        visualizer.Visualize();
+
+        DiagramPool.Instance.ClassDiagram.graph.Layout();
+    }
 }
