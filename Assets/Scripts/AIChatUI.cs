@@ -117,13 +117,27 @@ public class AIChatUI : MonoBehaviour
 
             " + plantUml + @"
 
-            When discussing or modifying the diagram:
+            Rules:
 
-            - Base your answers on the provided diagram
-            - Use the existing classes and relationships whenever possible
-            - If you propose changes to the diagram, return ONLY valid PlantUML
-            - The PlantUML must start with @startuml and end with @enduml
-            - Do not include explanations inside the PlantUML
+            - Base your answers on the provided diagram.
+            - Use the existing classes and relationships whenever possible.
+            - When the user asks a question about the diagram, answer normally in plain text.
+            - When the user requests a modification to the diagram, first briefly explain the proposed change and then provide the complete PlantUML diagram.
+            - The PlantUML must start with @startuml and end with @enduml.
+            - Do not wrap the PlantUML in markdown code blocks.
+            - Preserve unchanged parts of the diagram whenever possible.
+            - Return a complete diagram, not only the modified classes or relations.
+            - Treat the provided diagram as the template for all generated PlantUML.
+
+            - Use only the PlantUML syntax that already exists in the provided diagram.
+            - Only use:
+            - class declarations
+            - class attributes
+            - class methods
+            - --> associations
+            - --|> inheritance relations
+            - Do not use interfaces, abstract classes, enums, packages, notes, namespaces, generics (< >), stereotypes, skinparams, or any other PlantUML constructs.
+            - Follow the exact style of the provided diagram because the application uses a strict parser.
 
             The PlantUML will be parsed automatically by the application.";
 

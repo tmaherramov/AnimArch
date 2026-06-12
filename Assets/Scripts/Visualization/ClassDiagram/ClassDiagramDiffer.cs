@@ -114,12 +114,9 @@ namespace Visualization.ClassDiagram
                 return false;
             }
 
-            return string.Equals(a.Name, b.Name, StringComparison.Ordinal) &&
-                   string.Equals(
-                       NormalizeTypeNameForDiff(a.Type),
-                       NormalizeTypeNameForDiff(b.Type),
-                       StringComparison.Ordinal
-                   );
+            // Tymur TODO HOTFIX:
+            // Ignore attribute type changes for now.
+            return string.Equals(a.Name, b.Name, StringComparison.Ordinal);
         }
         
         private List<MarkingDecorator<CDParameter>> MakeDifferenceMethodParameters(CDMethod a, CDMethod b)

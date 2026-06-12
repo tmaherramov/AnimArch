@@ -4,6 +4,7 @@ public static class DiagramContextProvider
 {
     public static string GetPlantUML()
     {
+        // Debug.Log(new PlantUMLBuilder().GetDiagram());
         string uml = new PlantUMLBuilder().GetDiagram();
         // If the diagram is empty, the builder will return only @startuml/@enduml without classes.
         if (string.IsNullOrWhiteSpace(uml))
@@ -12,5 +13,7 @@ public static class DiagramContextProvider
         if (!uml.Contains("class "))
             return null;
         return uml;
+
+        
     }
 }

@@ -597,5 +597,8 @@ public class SuggestedDiagram : MonoBehaviour
         visualizer.Visualize();
 
         DiagramPool.Instance.ClassDiagram.graph.Layout();
-    }
+
+
+        
+        }
 }
