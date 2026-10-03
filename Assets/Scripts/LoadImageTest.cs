@@ -38,10 +38,10 @@ public class LoadImageTest : MonoBehaviour
     {
         string folder = Path.Combine(Application.dataPath, "GeneratedImages");
 
-        textureIdle     = LoadFromDisk(Path.Combine(folder, "idle.png"));
-        textureWaiting  = LoadFromDisk(Path.Combine(folder, "waiting.png"));
-        textureTalking  = LoadFromDisk(Path.Combine(folder, "talking.png"));
-        textureThinking = LoadFromDisk(Path.Combine(folder, "thinking.png"));
+        textureIdle     = LoadFromDisk(Path.Combine(folder, "idle2.png"));
+        textureWaiting  = LoadFromDisk(Path.Combine(folder, "waiting2.png"));
+        textureTalking  = LoadFromDisk(Path.Combine(folder, "talking2.png"));
+        textureThinking = LoadFromDisk(Path.Combine(folder, "thinking2.png"));
 
         if (textureIdle == null)
             Debug.LogError("idle.png not found! Put default images into Assets/GeneratedImages/");
